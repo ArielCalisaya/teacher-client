@@ -261,7 +261,11 @@ class DayView extends React.Component {
 				{({ store }) => {
 					const day = store.syllabus.find(d => d.dayNumber == match.params.day_number);
 					if (typeof day == "undefined") return <Loading />;
-					if (day && (!this.state.day || day.dayNumber !== this.state.day.dayNumber) && !this.state.errorLoadingSyllabus)
+					if (
+						day &&
+						(!this.state.day || day.dayNumber !== this.state.day.dayNumber) &&
+						(day.extended_instructions || !this.state.errorLoadingSyllabus)
+					)
 						this.loadInstructions(day);
 					return (
 						<div className="dayview p-0 pl-3">
