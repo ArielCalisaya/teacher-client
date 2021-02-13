@@ -76,6 +76,10 @@ const Store = PassedComponent => {
 								dayNumber++;
 							}
 						}
+						if (!d.label.includes("Day")) {
+							d.technologies = [d.label];
+							d.label = "Day " + d.dayNumber;
+						}
 						return d;
 					});
 					this.setState({
