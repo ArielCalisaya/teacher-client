@@ -331,8 +331,8 @@ class DayView extends React.Component {
 									<p className="info-bar">
 										<DropLink
 											dropdown={day["assignments"].map(a => ({
-												label: a,
-												url: `https://projects.breatheco.de/d/${a}#readme`
+												label: a.title || a,
+												url: `https://projects.breatheco.de/d/${a.slug || a}#readme`
 											}))}
 											onSelect={opt => window.open(opt.url)}>
 											Assignments
