@@ -333,26 +333,34 @@ class DayView extends React.Component {
 								)}
 								{Array.isArray(day["assignments"]) && (
 									<p className="info-bar">
-										<DropLink
-											dropdown={day["assignments"].map(a => ({
-												label: a.title || a,
-												url: `https://projects.breatheco.de/d/${a.slug || a}#readme`
-											}))}
-											onSelect={opt => window.open(opt.url)}>
-											Assignments
-										</DropLink>
+										{day["assignments"].length > 0 ? (
+											<DropLink
+												dropdown={day["assignments"].map(a => ({
+													label: a.title || a,
+													url: `https://projects.breatheco.de/d/${a.slug || a}#readme`
+												}))}
+												onSelect={opt => window.open(opt.url)}>
+												Assignments
+											</DropLink>
+										) : (
+											"No new assignments for today"
+										)}
 									</p>
 								)}
 								{Array.isArray(day["lessons"]) && (
 									<p className="info-bar">
-										<DropLink
-											dropdown={day["lessons"].map(l => ({
-												label: l.title || l,
-												url: `https://content.breatheco.de/lesson/${l.slug || l}`
-											}))}
-											onSelect={opt => window.open(opt.url)}>
-											Lessons
-										</DropLink>
+										{day["lessons"].length > 0 ? (
+											<DropLink
+												dropdown={day["lessons"].map(l => ({
+													label: l.title || l,
+													url: `https://content.breatheco.de/lesson/${l.slug || l}`
+												}))}
+												onSelect={opt => window.open(opt.url)}>
+												Lessons
+											</DropLink>
+										) : (
+											"No new lessons for today"
+										)}
 									</p>
 								)}
 							</div>
