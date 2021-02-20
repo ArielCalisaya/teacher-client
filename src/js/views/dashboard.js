@@ -315,16 +315,20 @@ class DayView extends React.Component {
 								)}
 								{Array.isArray(day["replits"]) && (
 									<p className="info-bar">
-										<DropLink
-											dropdown={day["replits"].map(r => ({
-												label: r.title,
-												url: `https://assets.breatheco.de/apps/replit/?r=${r.slug}&c=${
-													currentCohort.slug
-												}&assets_token=${assets_token}`
-											}))}
-											onSelect={opt => window.open(opt.url)}>
-											Replits
-										</DropLink>
+										{day["replits"].length > 0 ? (
+											<DropLink
+												dropdown={day["replits"].map(r => ({
+													label: r.title,
+													url: `https://assets.breatheco.de/apps/replit/?r=${r.slug}&c=${
+														currentCohort.slug
+													}&assets_token=${assets_token}`
+												}))}
+												onSelect={opt => window.open(opt.url)}>
+												Exercises (A.k.a: replits)
+											</DropLink>
+										) : (
+											"No exercises assigned for this day"
+										)}
 									</p>
 								)}
 								{Array.isArray(day["assignments"]) && (
